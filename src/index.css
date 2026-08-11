@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap");
+
+:root {
+  /* Board / polaroid palette */
+  --color-board: #2e3a34;
+  --color-board-deep: #212a25;
+  --color-paper: #f7f1e4;
+  --color-pin: #b5432e;
+  --color-leaf: #8ba06b;
+  --color-ink: #20241f;
+
+  --font-display: "Kalam", cursive;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-board);
+  background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(247, 241, 228, 0.05) 1px,
+      transparent 0
+    ),
+    linear-gradient(180deg, var(--color-board) 0%, var(--color-board-deep) 100%);
+  background-size: 20px 20px, 100% 100%;
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: var(--color-leaf);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-leaf);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

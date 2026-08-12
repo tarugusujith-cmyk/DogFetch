@@ -1,6 +1,6 @@
 import type { DogApiResponse, DogImage } from "../types";
 
-const RANDOM_IMAGE_URL = "https://dog.ceo/api/breeds/image/random";
+const RANDOM_IMAGE_URL = "https://dog.ceo/api/breeds/image/random/5";
 
 /**
  * Dog CEO image URLs look like:

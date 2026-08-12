@@ -1,28 +1,33 @@
-import { DogBoard } from "./components/DogBoard";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
+  const [dogs, setDogs] = useState<string[]>([]);
+
+  useEffect(() => {
+    fetch("https://dog.ceo/api/breeds/image/random/5")
+      .then((response) => response.json())
+      .then((data) => {
+        setDogs(data.message);
+      })
+      .catch((error) => {
+        console.error("Error fetching dog images:", error);
+      });
+  }, []);
+
   return (
     <div className="board">
-      <header className="board__header">
-        <p className="board__eyebrow">Random Dog Image · Dog CEO API</p>
-        <h1 className="board__title">Good Dog, Fresh Pin</h1>
-        <p className="board__subtitle">
-          Pull the tag for a brand new dog, fetched live and pinned to the
-          board.
-        </p>
-      </header>
+      <h1>🐶 Dog Images</h1>
 
-      <DogBoard />
-
-      <footer className="board__footer">
-        <p>
-          Data source:{" "}
-          <a href="https://dog.ceo/dog-api/" target="_blank" rel="noreferrer">
-            dog.ceo/dog-api
-          </a>
-        </p>
-      </footer>
+      <div className="dog-grid">
+        {dogs.map((dog, index) => (
+          <img
+            key={index}
+            src={dog}
+            alt={`Dog ${index + 1}`}
+          />
+        ))}
+      </div>
     </div>
   );
 }

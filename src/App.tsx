@@ -4,7 +4,6 @@ import "./App.css";
 function App() {
   const [dogs, setDogs] = useState<string[]>([]);
 
-  // Function to fetch 5 dog images
   const fetchDogs = () => {
     fetch("https://dog.ceo/api/breeds/image/random/5")
       .then((response) => response.json())
@@ -16,31 +15,28 @@ function App() {
       });
   };
 
-  // Fetch dogs when the page loads
   useEffect(() => {
     fetchDogs();
   }, []);
 
   return (
     <div className="board">
-      <div className="board__header">
-        <h1>🐶 Dog Images</h1>
-
-        <button className="fetch-btn" onClick={fetchDogs}>
-           Fetch Dogs
-        </button>
-      </div>
+      <h1>🐶 Dog Images</h1>
 
       <div className="dog-grid">
         {dogs.map((dog, index) => (
-          <div className="dog-card" key={index}>
-            <img
-              src={dog}
-              alt={`Dog ${index + 1}`}
-            />
-          </div>
+          <img
+            key={index}
+            src={dog}
+            alt={`Dog ${index + 1}`}
+          />
         ))}
       </div>
+
+      {/* Fetch button below the images */}
+      <button className="fetch-btn" onClick={fetchDogs}>
+        🐶 Fetch Dogs
+      </button>
     </div>
   );
 }
